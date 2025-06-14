@@ -249,7 +249,7 @@ const Todo = () => {
                     htmlFor="filter-checked"
                   >
                     <input
-                      className="mb-1 cursor-pointer"
+                      className="mb-0.5 cursor-pointer"
                       type="checkbox"
                       name="filter-status"
                       value="done"
