@@ -385,8 +385,6 @@ const Todo = () => {
           {/* bottom gradient */}
           {/* <div className="fixed bottom-0 right-0 w-full h-24 bg-gradient-to-t from-neutral-200/90 via-neutral-200/50 to-neutral-200/10 z-20 backdrop-blur-4xl pointer-events-none"></div> */}
 
-     
-
         </div>
       </div>
            {/* add task modal */}
