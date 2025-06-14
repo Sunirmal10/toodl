@@ -366,7 +366,7 @@ const Todo = () => {
                     </span>
                   </div>
                 ))
-            ) : error === null && (
+            ) : error === null && loading === false && (
               <div className="flex justify-center items-center w-full h-24 text-xl gap-1 font-semibold text-amber-500 dark:text-gray-200/80">
                 <span className="">Add a new task!</span>
               </div>
