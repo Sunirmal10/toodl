@@ -45,9 +45,6 @@
 
 ![toodl-mobile-create-task](https://github.com/user-attachments/assets/44fd3246-3dd7-470f-ab2d-775914464e6d)
 
-
-##  🔧 Installation
-
 ## 🚀 Local Development Setup
 
 ## 1. Clone the repository and navigate to the root directory:
