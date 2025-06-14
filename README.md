@@ -97,7 +97,7 @@ cd toodl
 > ⚠️ Make sure MongoDB is running locally or update the connection string in your backend configuration with your own MongoDB connection.
 
 
-## 4. Open your browser and visit http://localhost:5173 or any other mentioned port and URL to view the Toodl application.
+### 4. Open your browser and visit http://localhost:5173 or any other mentioned port and URL to view the Toodl application.
 
 ## ☁️ GitHub Link
 
