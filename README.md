@@ -41,13 +41,13 @@
 ![toodl-dark](https://github.com/user-attachments/assets/d89fa774-0e3c-4f25-b208-7448cdbfb40f)
 
 
-### Home Page(Small screen view):
+### Home Page (Small screen view):
 
 ![toodl-mobile-create-task](https://github.com/user-attachments/assets/44fd3246-3dd7-470f-ab2d-775914464e6d)
 
 ## 🚀 Local Development Setup
 
-## 1. Clone the repository and navigate to the root directory:
+### 1. Clone the repository and navigate to the root directory:
 
 ```
 git clone https://github.com/Sunirmal10/toodl.git
