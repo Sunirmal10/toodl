@@ -109,7 +109,7 @@ const Todo = () => {
         className="w-full h-screen overflow-hidden object-cover opacity-90"
       />
       {/* Sun / Moon section  */}
-      <section className="hidden md:flex absolute top-6 left-1/4 w-32 h-32 text-[16rem]  justify-between items-center px-4 bg-transparent">
+      <section className="hidden md:flex absolute top-6 left-1/5 w-32 h-32 text-[16rem]  justify-between items-center px-4 bg-transparent">
        {darkMode ? <HiMoon className="text-white" /> :  <MdSunny className="text-amber-500" /> }
       </section>
       {/* Real Todo Task Section  */}
