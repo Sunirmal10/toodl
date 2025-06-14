@@ -2,7 +2,7 @@
 
 ## 🚀 About the Project
 
-**Toodl** is a modern task management application built with the MERN stack and styled using Tailwind CSS. It features an elegant ldark mode, complete CRUD operations, responsive design, and efficient task filtering to boost productivity.
+**Toodl** is a modern task management application built with the MERN stack and styled using Tailwind CSS. It features an elegant dark mode, complete CRUD operations, responsive design, and efficient task filtering to boost productivity.
 
 ---
 
