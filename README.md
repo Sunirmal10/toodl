@@ -11,7 +11,7 @@
 - 🌙 **Dark Mode** – Eye-friendly interface with smooth theme transitions  
 - 📱 **Responsive Design** – Optimized layout for all screen sizes  
 - 🛠️ **CRUD Operations** – Easily create, view, update, and delete tasks  
-- 🧭 **Task Filtering** – Quickly sort tasks by status or category  
+- 🧭 **Task Filtering** – Quickly sort tasks by status or by marked checked feature
 - 🎨 **Dynamic Backgrounds** – Unique background visuals that adapt to the selected theme  
 - 🔐 **MERN Stack** – Built with MongoDB, Express.js, React, and Node.js for full-stack functionality  
 
