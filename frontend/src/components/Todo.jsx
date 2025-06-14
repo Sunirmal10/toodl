@@ -158,13 +158,13 @@ const Todo = () => {
             {/* loading state */}
 
             {loading && (
-              <div className="flex justify-center items-center w-full h-24 text-xl gap-1 font-semibold text-gray-400 dark:text-gray-200">
+              <div className="flex justify-center items-center w-full h-24 text-xl gap-1 font-semibold text-amber-500 dark:text-gray-200">
                 <MdAccessTime /> <span>Loading</span>
               </div>
             )}
             {/* error state */}
             {error && (
-              <div className="flex justify-center items-center w-full h-24 text-red-400 dark:text-red-500 text-md text-center gap-1 font-semibold">
+              <div className="flex justify-center items-center w-full h-24 text-red-400 dark:text-red-500/80 text-md text-center gap-1 font-semibold">
                 <MdErrorOutline className="" />
                 <span className="">Something is wrong! {error}</span>
               </div>
@@ -187,7 +187,7 @@ const Todo = () => {
                     htmlFor="all"
                   >
                     <input
-                      className="mb-0.5 cursor-pointer"
+                      className=" cursor-pointer"
                       type="radio"
                       name="filter-status"
                       checked={filterRadioValue === ""}
@@ -202,7 +202,7 @@ const Todo = () => {
                     htmlFor="pending"
                   >
                     <input
-                      className="mb-0.5 cursor-pointer"
+                      className=" cursor-pointer"
                       type="radio"
                       name="filter-status"
                       checked={filterRadioValue === "pending"}
@@ -217,7 +217,7 @@ const Todo = () => {
                     htmlFor="running"
                   >
                     <input
-                      className="mb-0.5 cursor-pointer"
+                      className=" cursor-pointer"
                       type="radio"
                       name="filter-status"
                       checked={filterRadioValue === "running"}
@@ -232,7 +232,7 @@ const Todo = () => {
                     htmlFor="done"
                   >
                     <input
-                      className="mb-0.5 cursor-pointer"
+                      className=" cursor-pointer"
                       type="radio"
                       name="filter-status"
                       checked={filterRadioValue === "done"}
@@ -249,7 +249,7 @@ const Todo = () => {
                     htmlFor="filter-checked"
                   >
                     <input
-                      className="mb-0.5 cursor-pointer"
+                      className=" cursor-pointer"
                       type="checkbox"
                       name="filter-status"
                       value="done"
@@ -367,7 +367,7 @@ const Todo = () => {
                   </div>
                 ))
             ) : error === null && (
-              <div className="flex justify-center items-center w-full h-24 text-xl gap-1 font-semibold text-orange-500/80 dark:text-gray-200/80">
+              <div className="flex justify-center items-center w-full h-24 text-xl gap-1 font-semibold text-amber-500 dark:text-gray-200/80">
                 <span className="">Add a new task!</span>
               </div>
             )}
