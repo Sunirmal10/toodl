@@ -153,24 +153,12 @@ const Todo = () => {
             </span>
           </span>
 
+          
+
           {/* todo list wrapper  */}
           <div className="flex flex-col gap-2.5 w-full px-2">
-            {/* loading state */}
 
-            {loading && (
-              <div className="flex justify-center items-center w-full h-24 text-xl gap-1 font-semibold text-amber-500 dark:text-gray-200">
-                <MdAccessTime /> <span>Loading</span>
-              </div>
-            )}
-            {/* error state */}
-            {error && (
-              <div className="flex justify-center items-center w-full h-24 text-red-400 dark:text-red-500/80 text-md text-center gap-1 font-semibold">
-                <MdErrorOutline className="" />
-                <span className="">Something is wrong! {error}</span>
-              </div>
-            )}
-
-            {/* Filters */}
+    {/* Filters */}
 
             {
               <section
@@ -261,6 +249,23 @@ const Todo = () => {
                 </div>
               </section>
             }
+
+            {/* loading state */}
+
+            {loading && (
+              <div className="flex justify-center items-center w-full h-24 text-xl gap-1 font-semibold text-amber-500 dark:text-gray-200">
+                <MdAccessTime /> <span>Loading</span>
+              </div>
+            )}
+            {/* error state */}
+            {error && (
+              <div className="flex justify-center items-center w-full h-24 text-red-400 dark:text-red-500/80 text-md text-center gap-1 font-semibold">
+                <MdErrorOutline className="" />
+                <span className="">Something is wrong! {error}</span>
+              </div>
+            )}
+
+        
 
             {/* todos list mapping  */}
 

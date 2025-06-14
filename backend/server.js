@@ -34,16 +34,11 @@ mongoose.connect(process.env.MONGO_URL).then(()=> {
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
-
-const allowedOrigins = [
-  'http://localhost:5173', // Vite default
-  'https://toodl.onrender.com', // Production URL (frontend)
-];
-
-app.use(cors({
-  origin: allowedOrigins,
-  credentials: true
-}));
+app.use(cors(
+    // {
+    //   origin: frontend deploy url
+    // }
+));
 
 // 6. routes
 
