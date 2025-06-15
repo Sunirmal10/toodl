@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { IoMdClose } from 'react-icons/io'
@@ -52,10 +52,10 @@ const UpdateTaskModal = ({setShowUpdateTaskModal, fetchTodos, editId, todos}) =>
     
           const data = await res.json();
           if (data.success) {
-            console.log("Task updated successfully");
+         
                   fetchTodos(); // Fetch updated todos after creating a new task
           } else {
-            console.log("Failed to updated task");
+            console.log("Failed to update task");
           }
       
    
@@ -106,6 +106,7 @@ const UpdateTaskModal = ({setShowUpdateTaskModal, fetchTodos, editId, todos}) =>
   </button>
 
   <button className='flex justify-center items-center absolute top-4.5 right-3.5 w-5 h-5 rounded-full bg-transparent hover:bg-gray-200 hover:scale-[1.2] active:scale-90 cursor-pointer'
+  title='Close'
   onClick={()=>setShowUpdateTaskModal(false)}
   >
     <IoMdClose />

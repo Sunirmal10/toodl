@@ -6,18 +6,16 @@ import {
   MdErrorOutline,
   MdFilterList,
   MdFilterListOff,
-  MdOutlineDragIndicator,
+
   MdSunny,
 } from "react-icons/md";
-import { FiEdit } from "react-icons/fi";
-import { BsMoonStarsFill } from "react-icons/bs";
-import { GoGrabber } from "react-icons/go";
+
 import AddTaskModal from "./AddTaskModal";
 import { useEffect } from "react";
 import UpdateTaskModal from "./UpdateTaskModal";
-import { TbFilterDown } from "react-icons/tb";
-import { TbFilterUp } from "react-icons/tb";
+
 import { HiMoon } from "react-icons/hi";
+import ReadTaskModal from "./ReadTaskModal";
 
 const Todo = () => {
 
@@ -26,12 +24,18 @@ const Todo = () => {
   const [todos, setTodos] = useState([]);
 
   const [editId, setEditId] = useState(null);
+  const [viewId, setViewId] = useState(null);
 
   const [darkMode, setDarkMode] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
   const [checkedTask, setCheckedTask] = useState(false);
 
   const [filterRadioValue, setFilterRadioValue] = useState("");
+
+    const [showAddTaskModal, setShowAddTaskModal] = React.useState(false);
+  const [showUpdateTaskModal, setShowUpdateTaskModal] = React.useState(false);
+  const [showReadTaskModal, setShowReadTaskModal] = React.useState(false);
+
 
   const api_base_url = import.meta.env.VITE_API_URL;
 
@@ -48,15 +52,15 @@ const Todo = () => {
       setTodos(data.tasks);
       if (data.success) {
         setTodos(data.tasks);
-        console.log("Todos fetched successfully:", data.tasks);
+  
       } else {
-        console.error("Failed to fetch todos");
+     
         setError("Failed to fetch todos");
       }
       setLoading(false);
     } catch (error) {
-      console.error("Error fetching todos:", error);
-      setError(" Error fetching todos");
+
+      setError(" Error fetching todos: ", error);
       setLoading(false);
     }
   };
@@ -65,8 +69,6 @@ const Todo = () => {
     fetchTodos();
   }, []);
 
-  const [showAddTaskModal, setShowAddTaskModal] = React.useState(false);
-  const [showUpdateTaskModal, setShowUpdateTaskModal] = React.useState(false);
 
   const deleteTodo = async (id) => {
     try {
@@ -80,15 +82,15 @@ const Todo = () => {
 
       const data = await res.json();
       if (data.success) {
-        console.log("Todo deleted successfully:", data);
+
         fetchTodos();
       } else {
-        console.error("Failed to delete todo:", data);
+
         setError("Failed to delete todo");
       }
     } catch (error) {
-      console.error("Error deleting todo:", error);
-      setError("Error deleting todo");
+
+      setError("Error deleting todo :", error);
     }
   };
 
@@ -147,7 +149,7 @@ const Todo = () => {
             <span
               className="flex absolute top-2 right-2 w-7 h-7 rounded-full dark:text-white text-orange-800/80 text-2xl cursor-pointer hover:scale-110 transition-all duration-200 ease-in-out hover:bg-orange-400/50 hover:dark:bg-gray-900/50 justify-center items-center"
               onClick={toggleDarkMode}
-              // title={darkMode ? "Light Mode" : "Dark Mode"}
+              title={darkMode ? "Light Mode" : "Dark Mode"}
             >
               {darkMode ? <IoMdSunny /> : <IoMdMoon />}
             </span>
@@ -181,7 +183,7 @@ const Todo = () => {
                       checked={filterRadioValue === ""}
                       value=""
                       id="all"
-                      onClick={() => setFilterRadioValue("")}
+                      onChange={() => setFilterRadioValue("")}
                     />
                     All
                   </label>
@@ -196,7 +198,7 @@ const Todo = () => {
                       checked={filterRadioValue === "pending"}
                       value="pending"
                       id="pending"
-                      onClick={(e) => setFilterRadioValue(e.target.value)}
+                      onChange={(e) => setFilterRadioValue(e.target.value)}
                     />
                     Pending
                   </label>
@@ -211,7 +213,7 @@ const Todo = () => {
                       checked={filterRadioValue === "running"}
                       value="running"
                       id="running"
-                      onClick={(e) => setFilterRadioValue(e.target.value)}
+                      onChange={(e) => setFilterRadioValue(e.target.value)}
                     />
                     Running
                   </label>
@@ -226,7 +228,7 @@ const Todo = () => {
                       checked={filterRadioValue === "done"}
                       value="done"
                       id="done"
-                      onClick={(e) => setFilterRadioValue(e.target.value)}
+                      onChange={(e) => setFilterRadioValue(e.target.value)}
                     />
                     Done
                   </label>
@@ -286,15 +288,17 @@ const Todo = () => {
                 })
 
                 .map((task, i) => (
-                  // individual todo
+
+                  // Individual Todo Task Item
 
                   <div
                     key={i}
                     className="flex gap-1.5 items-center justify-between group bg-white shadow-md rounded-lg w-full p-4 "
                   >
-                    <span className="flex gap-2 items-center">
-                      {/* grabbing icon  */}
-                      {/* <GoGrabber className="hidden text-gray-500 relative top-0 -left-2.5 -mr-4.5 text-xl p-0 m-0 group-hover:block group-hover:opacity-80 transition-all duration-400 ease-in-out" /> */}
+                    <span className="flex gap-2 items-center cursor-pointer w-full"
+                 
+                    >
+              
                       <input
                         className="cursor-pointer"
                         type="checkbox"
@@ -313,7 +317,14 @@ const Todo = () => {
                         }}
                         title="Mark task as checked"
                       />
-                      <h2
+
+                      <span className="flex gap-1.5 w-full items-center"
+                           onClick={() => {
+                          setShowReadTaskModal(true);
+                          setViewId(task._id);
+                        }}
+                      >
+   <h2
                         className={
                           task.checked
                             ? "text-sm font-semibold text-gray-500 line-through cursor-pointer"
@@ -329,7 +340,7 @@ const Todo = () => {
                       {/* status tab */}
 
                       <span
-                        className={`rounded-2xl text-[10px] px-2 py-1 sm:text-xs opacity-80 scale-90 sm:scale-95 font-semibold cursor-pointer ${
+                        className={`rounded-2xl text-[10px] px-2 py-1 sm:text-xs opacity-80 scale-90 sm:scale-95 font-semibold  ${
                           task.status === "pending"
                             ? "bg-red-300/80 text-red-600/80"
                             : task.status === "running"
@@ -343,11 +354,15 @@ const Todo = () => {
                         {task.status.charAt(0).toUpperCase() +
                           task.status.slice(1)}
                       </span>
+
+                      </span>
+                   
                     </span>
 
                     {/* Edit and Delete buttons */}
 
                     <span className="flex gap-1.5 items-center">
+
                       {/* edit task button */}
                       <button
                         className="border-0 bg-transparent cursor-pointer text-gray-400 hover:bg-gray-200 rounded-full w-5 h-5 hover:scale-[1.2] flex justify-center items-center"
@@ -387,9 +402,7 @@ const Todo = () => {
             <IoMdAdd />
           </button>
 
-          {/* bottom gradient */}
-          {/* <div className="fixed bottom-0 right-0 w-full h-24 bg-gradient-to-t from-neutral-200/90 via-neutral-200/50 to-neutral-200/10 z-20 backdrop-blur-4xl pointer-events-none"></div> */}
-
+    
         </div>
       </div>
            {/* add task modal */}
@@ -417,6 +430,23 @@ const Todo = () => {
                 todos={todos}
                 setShowUpdateTaskModal={setShowUpdateTaskModal}
                 showUpdateTaskModal={showUpdateTaskModal}
+                fetchTodos={fetchTodos}
+              />
+            </section>
+          )}
+          {/* View/Read task modal */}
+
+          {showReadTaskModal && (
+            <section
+              className={`fixed top-0 w-full h-full bg-black/80 z-50 flex justify-center items-center`}
+            >
+              <ReadTaskModal
+                viewId={viewId}
+                todos={todos}
+                setShowReadTaskModal={setShowReadTaskModal}
+                showReadTaskModal={showReadTaskModal}
+                setShowUpdateTaskModal={setShowUpdateTaskModal}
+                setEditId={setEditId}
                 fetchTodos={fetchTodos}
               />
             </section>
